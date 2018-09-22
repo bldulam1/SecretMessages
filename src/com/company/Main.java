@@ -21,9 +21,21 @@ public class Main {
         messageLen = message.length();
 
         char key = 13;
+        char curChar;
 
-        for (int x = 0; x < messageLen; x++)
-            out.append((char) (message.charAt(x) + 13));
+        for (int x = 0; x < messageLen; x++) {
+            curChar = message.charAt(x);
+
+            if (curChar >= 'A' && curChar <= 'Z') {
+                curChar += key;
+                if (curChar > 'Z') curChar -= 26;
+            } else if (curChar >= 'a' && curChar <= 'z') {
+                curChar += key;
+                if (curChar > 'z') curChar -= 26;
+            }
+
+            out.append(curChar);
+        }
 
         System.out.println();
         System.out.println(out);
